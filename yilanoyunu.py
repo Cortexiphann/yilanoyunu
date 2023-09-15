@@ -26,6 +26,7 @@ class YilanOyunu:
 
         # Duraklatma durumu
         self.paused = False
+        self.after_id = None  # Oyun döngüsünün kontrolü için
 
         # Tuş bağlamaları
         self.ana_pencere.bind("<Up>", lambda e: self.yon_degistir("Yukarı"))
@@ -36,12 +37,10 @@ class YilanOyunu:
 
         # Oyun döngüsü
         self.delay = 150
-        self.after_id = None  # Sonraki after işleminin kimliği için değişken
+        self.game_loop()
 
         # Düğmeleri oluştur
         self.create_buttons()
-
-        self.game_loop()
 
     def yeni_yiyecek(self):
         while True:
@@ -170,3 +169,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     oyun = YilanOyunu(root)
     root.mainloop()
+
